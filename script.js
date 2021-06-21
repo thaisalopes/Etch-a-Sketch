@@ -1,37 +1,37 @@
 function initialize (numberOfSquares) {
+  const container = document.querySelector('.gridSquares');
+  container.style.cssText = `grid-template-columns: repeat(${numberOfSquares}, auto);`
   for (let i = 1; i <= numberOfSquares**2; i++)
   {
-    const container = document.querySelector('.gridSquares');
-    
     const content = document.createElement('div');
     content.classList.add('square')
     content.setAttribute('id','square'+i);        
     container.appendChild(content);
   }
-const squares = document.querySelectorAll('.square');
-squares.forEach((square) => {
+  const squares = document.querySelectorAll('.square');
+  squares.forEach((square) => {
   square.addEventListener('mouseover', () => {
-    square.style.backgroundColor = 'pink';
+    square.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255}`;
   });
 });
 }
-initialize(16);
+initialize(20);
 
-function changeGrid (numberOfSquares){
-  numberOfSquares = prompt("Please input the number of squares you want in the grid")
+function changeGrid (){
+  let numberOfSquares = 0;  
+  do {
+    numberOfSquares = prompt("Please input S for the grid size SxS (max = 100")
+  }  while (numberOfSquares>100 || numberOfSquares <1 || isNaN(numberOfSquares))
   removeDivs();
   return numberOfSquares;
 }
 
 function removeDivs () {
-  for (let i = 1; i <= numberOfSquares**2; i++)
-  {
-    const elemento = document.getElementsByClassName('square');
+  const elemento = document.querySelector('.gridSquares');
     while (elemento.firstChild) {
       elemento.removeChild(elemento.firstChild);
     }
   }
-}
 
 function resetGrid () {
   const squares = document.querySelectorAll('.square');
