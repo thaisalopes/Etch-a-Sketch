@@ -8,17 +8,14 @@ function initialize (numberOfSquares) {
     content.setAttribute('id','square'+i);        
     container.appendChild(content);
   }
-}
-initialize(16);
-
-
 const squares = document.querySelectorAll('.square');
-
 squares.forEach((square) => {
   square.addEventListener('mouseover', () => {
     square.style.backgroundColor = 'pink';
   });
 });
+}
+initialize(16);
 
 function changeGrid (numberOfSquares){
   numberOfSquares = prompt("Please input the number of squares you want in the grid")
@@ -36,13 +33,16 @@ function removeDivs () {
   }
 }
 
-/*function resetGrid () {
+function resetGrid () {
+  const squares = document.querySelectorAll('.square');
   squares.forEach((square) => {square.style.backgroundColor = 'white';
-  return
-});*/
+});
+}
 
 const changeGridButton = document.querySelector('#changeGrid');
-changeGridButton.addEventListener('click', () => initialize(changeGrid()));
+changeGridButton.addEventListener('click', () => { 
+  initialize(changeGrid())});
 
 const resetGridButton = document.querySelector('#resetGrid');
-resetGridButton.addEventListener('click', () => resetGrid());
+resetGridButton.addEventListener('click', () => {
+  resetGrid()});
